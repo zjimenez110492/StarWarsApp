@@ -3,16 +3,15 @@ import { VerPersonajesComponent } from './Componentes/ver-personajes/ver-persona
 import { VerNavesComponent } from './Componentes/ver-naves/ver-naves.component';
 import { ListPeliculasComponent } from './Componentes/list-peliculas/list-peliculas.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';/* 
-import {MatDialogRef} from '@angular/material/dialog'; */
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
-import { HttpClient, HttpClientModule } from '@angular/common/http';/* 
-import { MatDialogRef } from '@angular/material/dialog/dialog-ref'; */
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +23,13 @@ import { MatDialogRef } from '@angular/material/dialog/dialog-ref'; */
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,/* 
-    MatDialogRef,  */
+    MatToolbarModule,
+    MatDialogModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
-  providers: [PeliculasService,HttpClient,VerNavesComponent/* , {provide: MatDialogRef, useValue: {}} */],
+  providers: [PeliculasService,HttpClient,VerNavesComponent,VerNavesComponent, {provide: MatDialogRef, useValue: {}},VerPersonajesComponent, {provide: MatDialogRef, useValue: {}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { ListPeliculasComponent } from './../list-peliculas/list-peliculas.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';/* 
-import { MatDialogRef } from '@angular/material/dialog/dialog-ref'; */
+import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ver-naves',
@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog/dialog-ref'; */
 })
 export class VerNavesComponent implements OnInit {
 
-  constructor(private routing:Router/* , public dialogRef: MatDialogRef<VerNavesComponent> */) { }
+  constructor(private routing:Router , public dialogRef: MatDialogRef<VerNavesComponent> ) { }
 
   ngOnInit() {
   }
@@ -18,8 +18,8 @@ export class VerNavesComponent implements OnInit {
   {
     this.routing.navigateByUrl('/listar');
   }
-  okClick() {/* 
-    this.dialogRef.close();  */
+  okClick() {
+    this.dialogRef.close();  
   }
 
 }

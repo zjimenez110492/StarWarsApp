@@ -4,6 +4,7 @@ export class Pelicula {
     director:string;
     opening: string;
     productor: string;
+    personajes:string[];
     constructor(){
       
     }
