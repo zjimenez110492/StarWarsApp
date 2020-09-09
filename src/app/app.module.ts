@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatTableModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [PeliculasService,HttpClient,VerNavesComponent,VerNavesComponent, {provide: MatDialogRef, useValue: {}},VerPersonajesComponent, {provide: MatDialogRef, useValue: {}}],
   bootstrap: [AppComponent]

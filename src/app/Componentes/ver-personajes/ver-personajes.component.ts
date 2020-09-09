@@ -38,7 +38,7 @@ export class VerPersonajesComponent implements OnInit {
           v.nombre=resultado.name;
           v.num_pasajeros=resultado.passengers;
           v.peliculas=resultado.films;
-          console.log("Agregando al arreglo:  ",v);
+          
           this.vehiculos.push(v);            
         }
         );
@@ -60,7 +60,7 @@ export class VerPersonajesComponent implements OnInit {
       dialogRef.componentInstance.mapearArreglo(vehiculos);
     
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log('Dialogo Naves Cerrado');
     });   
   }
   okClick() { 
@@ -69,7 +69,6 @@ export class VerPersonajesComponent implements OnInit {
   mapearArreglo(personaje:Personaje[])
   {
     this.dataSource=personaje;
-    console.log("INFORMACION PERSONAJES: ",personaje);
-    /* this.dataSource.push(personaje); */
+  
   }
 }

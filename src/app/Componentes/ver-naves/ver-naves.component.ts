@@ -30,8 +30,7 @@ export class VerNavesComponent implements OnInit {
   mapearArreglo(vehiculo:Vehiculo[])
   {
     this.dataSource=vehiculo;
-    console.log("INFORMACION VEHICULOS: ",vehiculo);
-    /* this.dataSource.push(personaje); */
+    
   }
   okClick() {
     this.dialogRef.close();  

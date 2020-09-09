@@ -38,8 +38,7 @@ export class ListPeliculasComponent implements OnInit {
           peli.opening=i.opening_crawl;
           peli.productor=i.producer;
           peli.personajes=i.characters;
-          this.peliculas.push(peli);
-          console.log("Pelicula:  ",peli);          
+          this.peliculas.push(peli);       
           this.dataSource=this.peliculas;
         }          
         
@@ -61,7 +60,6 @@ export class ListPeliculasComponent implements OnInit {
             pers.nombre=resultado.name;
             pers.peso=resultado.mass;
             pers.vehiculos=resultado.vehicles;
-            console.log("Agregando al arreglo:  ",pers);
             this.personajes.push(pers);            
         }
         );
@@ -83,7 +81,7 @@ export class ListPeliculasComponent implements OnInit {
       dialogRef.componentInstance.mapearArreglo(personajes);
     
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log('Dialogo Personajes cerrado');
     });   
   }
 }
