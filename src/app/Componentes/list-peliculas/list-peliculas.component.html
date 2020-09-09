@@ -1,13 +1,14 @@
-<mat-card>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+<mat-card>
+    <h1 style="text-align: center;"><strong>PELÍCULAS</strong></h1>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
     <!-- Position Column -->
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef> -- FECHA--  </th>
-      <td mat-cell *matCellDef="let element"> {{element.fecha_lanzamiento}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.fecha_lanzamiento|date}} </td>
     </ng-container>
   
     <!-- Name Column -->
@@ -17,8 +18,8 @@
     </ng-container>
   
     <!-- Weight Column -->
-    <ng-container matColumnDef="opening">
-      <th mat-header-cell *matHeaderCellDef> OPENING </th>
+    <ng-container matColumnDef="opening" >
+      <th mat-header-cell *matHeaderCellDef style="text-justify: distribute; width: 40%;"> OPENING </th>
       <td mat-cell *matCellDef="let element"> {{element.opening}} </td>
     </ng-container>
   

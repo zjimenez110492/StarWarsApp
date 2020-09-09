@@ -1,1 +1,41 @@
-<button (click)="volver()" >lISTAR</button>
+<mat-card>
+    <h1 style="text-align: center;"><strong>VER VEHICULOS</strong> </h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> NOMBRE  </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="modelo">
+          <th mat-header-cell *matHeaderCellDef> MODELO </th>
+          <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="clase">
+          <th mat-header-cell *matHeaderCellDef> CLASE </th>
+          <td mat-cell *matCellDef="let element"> {{element.clase}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="num_pasajeros">
+          <th mat-header-cell *matHeaderCellDef> PESO </th>
+          <td mat-cell *matCellDef="let element"> {{element.num_pasajeros}} </td>
+        </ng-container>
+          <ng-container matColumnDef="peliculas">
+            <th mat-header-cell *matHeaderCellDef> PELICULAS </th>
+            <td mat-cell *matCellDef="let element"> 
+               <p *ngFor="let item of element.peliculas" >{{item}}</p>    
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card>

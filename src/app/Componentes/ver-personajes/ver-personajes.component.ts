@@ -1,8 +1,11 @@
+import { Personaje } from './../../Modelos/personaje.model';
 import { PeliculasService } from 'src/app/Servicios/peliculas.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Pelicula } from 'src/app/Modelos/pelicula.model';
+import { Vehiculo } from 'src/app/Modelos/vehiculo.model';
 import { Router } from '@angular/router';
+import { VerNavesComponent } from '../ver-naves/ver-naves.component';
 
 @Component({
   selector: 'app-ver-personajes',
@@ -10,45 +13,63 @@ import { Router } from '@angular/router';
   styleUrls: ['./ver-personajes.component.css']
 })
 export class VerPersonajesComponent implements OnInit {
-  rutaPersonajes:String[]=[];
-  displayedColumns: string[] = ['fecha', 'director', 'opening', 'productor','opciones'];
-  dataSource :Pelicula[];
-  peliculas:Pelicula[];
+  rutaPersonajes:string[]=[];
+  displayedColumns: string[] = ['nombre', 'fecha_nacimiento', 'genero', 'peso','altura','opciones'];
+  dataSource :Personaje[];
+  personajes:Personaje[];
+  vehiculos:Vehiculo[]=[];
   constructor( public dialogRef: MatDialogRef<VerPersonajesComponent> ,private routing: Router, private peliculasService:PeliculasService,
     private dialog: MatDialog) { }
 
-  ngOnInit() {
-    this.peliculas=[];
-    this.peliculasService.cargarPeliculas().subscribe(
-      resultado=>{
-        for(let i of resultado.results)
-        {
-          let peli:Pelicula;
-          peli=new Pelicula();
-          peli.id=i.episode_id;
-          peli.director=i.director;
-          peli.fecha_lanzamiento=i.created;
-          peli.opening=i.opening_crawl;
-          peli.productor=i.producer;
-          peli.personajes=i.characters;
-          this.peliculas.push(peli);
-          console.log("Pelicula:  ",peli);
-        }          
-        this.dataSource=this.peliculas;
-      }
-      );
+  ngOnInit() { 
   }
-  ver(){
-    const dialogRef = this.dialog.open(VerPersonajesComponent, {
-      width: '800px',height:'1000px',
+  ver(rutaVehiculos:string[]){
+    console.log("RUTAS VEHICULOS .  ",rutaVehiculos);
+    
+    for(let i of rutaVehiculos)
+    {
+      
+      this.peliculasService.cargarVehiculo(i).subscribe(
+        resultado=>{          
+          let v:Vehiculo;  
+          v=new Vehiculo();
+          v.clase=resultado.vehicle_class;
+          v.modelo=resultado.model;
+          v.nombre=resultado.name;
+          v.num_pasajeros=resultado.passengers;
+          v.peliculas=resultado.films;
+          console.log("Agregando al arreglo:  ",v);
+          this.vehiculos.push(v);            
+        }
+        );
+    }
+    setTimeout(()=>{  
+      this.abrirDialogo(this.vehiculos);
+      
+    },1000);
+   
+  }
+  abrirDialogo(vehiculos:Vehiculo[])
+  {
+    
+    const dialogRef = this.dialog.open(VerNavesComponent, {
+      width: '800px',
       data: {
       }
-    });
+    });    
+      dialogRef.componentInstance.mapearArreglo(vehiculos);
+    
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-    });
+    });   
   }
   okClick() { 
     this.dialogRef.close(); 
+  }
+  mapearArreglo(personaje:Personaje[])
+  {
+    this.dataSource=personaje;
+    console.log("INFORMACION PERSONAJES: ",personaje);
+    /* this.dataSource.push(personaje); */
   }
 }
